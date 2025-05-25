@@ -7,18 +7,31 @@ import CourseInfo from "../components/CourseInfo";
 import CoursePreview from "../components/CoursePreview";
 import CourseDescription from "../components/CourseDescription";
 import CourseSidebar from "../components/CourseSidebar";
+import { use } from "react";
+
 
 interface PageProps {
-  params: { id: string };
+  params: Promise<{ id: string }> ;
 }
 
-export default function CourseDetails({ params }: PageProps ) {
+export default function CourseDetails({ params }: PageProps) {
+  const { id } = use(params);
+  // const [Id, setId] = useState('')
   const router = useRouter();
+
+  // useEffect(() => {
+  //   const getID = async () => {
+  //     const resolvedParams = await params;
+  //     setId(resolvedParams.id);
+  //   };
+  //   getID();
+  // }, [params]);
+  
   // ~ ######## Hooks
-  const { data: course , isError, error } = useGetEntity<ICourse>(`courses/${params.id}`);
+  const { data: course , isError, error } = useGetEntity<ICourse>( id ? `courses/${id}` : '' );
   // ~ ######## Hooks
   // ~ ######## start Logics
-    if (isError) {
+    if (isError || ! id ) {
       return (
         <div className="page flex-center min-h-[50vh] flex-col gap-4">
           <div className="text-xl text-destructive">Failed to load course</div>
