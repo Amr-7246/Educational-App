@@ -8,7 +8,11 @@ import CoursePreview from "../components/CoursePreview";
 import CourseDescription from "../components/CourseDescription";
 import CourseSidebar from "../components/CourseSidebar";
 
-export default function CourseDetails({ params }: { params: { id: string } }) {
+interface PageProps {
+  params: { id: string };
+}
+
+export default function CourseDetails({ params }: PageProps ) {
   const router = useRouter();
   // ~ ######## Hooks
   const { data: course , isError, error } = useGetEntity<ICourse>(`courses/${params.id}`);
