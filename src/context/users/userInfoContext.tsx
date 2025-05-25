@@ -3,11 +3,10 @@ import { ReactNode, useContext, useState, createContext, useEffect } from "react
 
 // ~ ######### User Info Context tybe
     export interface IUser {
-      password: string;
-      name: string;
-      email: string;
-      _id: string;
-      phoneNumber: number;
+        password: string;
+        name: string;
+        email: string;
+        _id: string;
     }
 
     interface AuthContextType {
