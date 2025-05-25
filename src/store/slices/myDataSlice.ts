@@ -24,7 +24,8 @@ export const myDataSlice = createSlice({
     name: 'myData',
     initialState,
     reducers: {
-        setMyData: (state, action: PayloadAction<string>) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        setMyData: (state: any  , action: PayloadAction<string>) => {
         state.name = action.payload;
     },
 },

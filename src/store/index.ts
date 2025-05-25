@@ -2,13 +2,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import myDataReducer from './slices/myDataSlice';
 import filterReducer from './slices/Filter';
-import Hotels from './slices/Hotels';
 
 export const store = configureStore({
 reducer: {
     myData: myDataReducer,
     filter: filterReducer,
-    Hotels: Hotels,
 },
 devTools: process.env.NODE_ENV !== 'production',
 });
